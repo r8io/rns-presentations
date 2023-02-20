@@ -29,7 +29,7 @@
       }
       
       a:link {
-        color:deepskyblue;
+        color: deepskyblue;
       }
 
       a:visited {
@@ -37,19 +37,49 @@
       }
 
       a:hover {
-        color:mediumturquoise;
+        color: mediumturquoise;
       }
 
       a:active {
         color: mediumturquoise;
-      } 
+      }
+
+      a[target="_blank"]::after {
+        content: url(./source/img/new-window.svg);
+        vertical-align: bottom;
+        margin-left: 0.5em;
+      }
+
+      .footer {
+        margin-top: 5em;
+        margin-left: 2em;
+      }
+
+      .footer a {
+        color: #3b759e;
+      }
+
+      .footer a:visited {
+        color: #3b759e;
+      }
+
+      .footer a:hover {
+        color: mediumturquoise;
+      }
+
+      .footer a:active {
+        color: deepskyblue;
+      }
   </style>
 </head>
 <body>
   <h1>RNS Presentations</h1>
   <ul>
     <li>
-      <a href="./001/index.html">Part 1 - Introduction</a>
+      <a target="_blank" href="./source/001-introduction.html">Part 1 - Introduction</a>
+    </li>
+    <li class="footer">
+      <a target="_blank" href="https://github.com/r8io/rns-presentations">GitHub Source</a>
     </li>
   </ul>
 </body>

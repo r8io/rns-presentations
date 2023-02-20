@@ -1,0 +1,293 @@
+////
+Convert asciidoc to html:
+  Run the following command to convert the
+  001-introduction.adoc file to 001-introduction.html
+
+  $ npx asciidoctor-revealjs 001-introduction.adoc
+////
+
+include::_settings_reveal.adoc[]
+:description: The Reticulum Network Stack (RNS), an Introductory Presentation
+
+== Reticulum Network Stack
+image::rns_logo_512.png[RNS,400,400]
+
+Part 1 -- Introduction
+----
+                      Release 0.4.9 Beta
+----
+
+== Open Source Software
+* Do not trust ... verify
+
+
+== But keep in mind
+“Any sufficiently advanced technology is indistinguishable from magic.” +
+_Arthur C. Clarke_
+
+
+== About This Talk
+* *Audience* -- People who like to communicate freely
+* *Problem* -- The internet is fundamentally broken
+* *Solution* -- The Reticulum Network Stack
+
+
+== Goal
+* *Replace the Internet Protocol Stack*
+* Because it is ...
+** *Not private* -- Personal source addresses
+** *Censurable* -- Centralized infrastructure
+** *Killable* -- Centralized infrastructure
+
+
+== Reticulum Network Stack
+* *Private*
+** Initiator anonymity
+** End-to-End Encrypted by default
+* *Not Censurable*
+** No centralized infrastructure needed
+** No DNS and TLS certificate authorities
+* *Not Killable*
+** Works even with packet radio
+
+=== Initiator anonymity
+* No personally identifiable source address
+** Only a 16 byte hashed address (destination) +
+<13425ec15b621c1d928589718000d814>
+* A transport node only knows the next hop
+** Not the complete path to a destination
+
+
+////
+=== End-to-End Encrypted
+* Destinations announce themselves to the network
+* The announce contains its address and public key
+* Messages are encrypted with this public key
+* A new ephemeral key is used for every packet sent
+* A receipt proof can be sent back to the sender
+** Calculate a SHA-256 hash of the received packet
+** Sign this hash with its Ed25519 signing key
+* A proof is verified against the recipient's public key
+////
+
+
+== Mark Qvist
+* Lead developer
+* 2014 - 2016 -- Protocol design
+* 2017 - 2022 -- Reference implementation
+* Financed through own funds and donations
+
+
+== Beta Status
+* Reticulum is in *beta* status
+* All core protocol features are implemented
+* The API and wire-format are relatively stable
+* Supports Android, Linux, macOS
+* There will be *bugs*
+
+
+////
+== Programming Languages
+* *Python* -- Reference implementation
+** Easy to understand for code review
+* *C, C++* -- RNode Firmware (rewrite)
+** Fast on microprocessors
+* *C* -- OpenModem
+** Fast on microprocessors
+////
+
+
+== A Message Oriented System
+* High-latency, low-bandwidth links
+* Point-to-point communication
+* Point-to-multipoint communication
+* Direct communication with clients in range
+* Communication over multiple hops in a network
+
+=== Hardware
+* *RNode* -- LoRa radio transceiver
+* *OpenModem* -- Packet radio modem and TNC
+
+
+== Terminology
+* *Reticulum* -- Network Stack
+* *LXMF* -- Messaging format and delivery protocol
+* *Nomad Network* -- Mesh communication platform
+* *Peer* -- LXMF client
+* *Node* -- Nomade Network instance
+** Can propagate and store messages
+** Can host pages and files
+
+
+== What Does It Do?
+* *Right Now*
+** Peer-to-Peer text chat
+** Encrypted QR paper messages
+** Host pages, files and message boards
+* *Future Plan*
+** Group chat
+** Chat with image and audio messages
+** Talk with half-duplex audio
+
+
+== Features
+* Transport agnostic
+* Peer-to-Peer to Planetary-Scale
+* Self-configuring multi-hop routing
+* Unforgeable packet delivery confirmation
+* Cryptography-based network stack
+* End-to-End Encryption
+* Forward Secrecy
+* Initiator Anonymity
+
+
+== Applications
+* Build wide-area networks with off-the-shelf tools
+** LoRa, packet radio, WiFi, Ethernet
+* Operate under adverse conditions
+** Extremely low bandwidth
+** Very high latency
+* Use carrier pigeons
+** Encrypted QR paper messages
+
+
+== Runs Almost Everywhere
+* LoRa radios, data radios, modems
+* Serial lines, AX.25 TNCs
+* Amateur radio digital modes
+* Wifi, Ethernet devices
+* Fibre-optic transceivers
+* TCP or UDP over IP networks
+* I2P network
+* Encrypted QR Paper Messages
+
+
+== Extremely Efficient
+* Supports a half-duplex channels with +
+500 bit/s and MTU of 500 byte
+
+* What's needed to start a secure connection
+** TLS1.3 Connection -- 15 packets, 10.000 bytes
+** RNS Link -- 3 packets, 297 bytes
+
+////
+* Only 0.45 bit/s needed to keep a RNS Link open
+** 100 concurrent links on a 1200 bit/s packet radio channel will leave 96% capacity for actual data
+////
+
+
+=== Maximum Transmission Unit
+* Maximum Transmission Unit (MTU)
+* Specifies the maximum size of a data packet
+* Measured in bytes
+
+
+[%notitle]
+== Goodby Internet Stack
+image::stack-layer-model.svg[Static, size=100%]
+
+
+== Not An Overlay-Network
+* *Tor and I2P*
+** Run on top of TCP (Tor) or IP (I2P)
+** Try to solve TCP/IP legacy problems
+* *Reticulum*
+** A completely new network stack
+** Can replace Ethernet, IP, TCP, TLS and HTTP
+** No legacy problems
+
+
+== Destinations
+* No addresses and ports known from IP, TCP, UDP
+* Reticulum uses 128 bit (16 byte) *destination* hashes
+* Displayed to the user as 16 hexadecimal bytes
+** <13425ec15b621c1d928589718000d814>
+* Can be named in a dotted notation
+** logger.sensor.temperature
+
+////
+----
+13 42 5e c1 5b 62 1c 1d 92 85 89 71 80 00 d8 14
+----
+----
+00010011 01000010 01011110 11000001
+01011011 01100010 00011100 00011101
+10010010 10000101 10001001 01110001
+10000000 00000000 11011000 00010100
+----
+////
+
+=== Byte, Decimal, Hexadecimal
+* Byte to Decimal (8 bit = 1 byte)
+** 00000001 = 1, 00000010 = 2, 00000011 = 3
+* Dezimal to Hexadecimal
+** 0-9 = 0-9, 10-15 = A-F
+** 0 = 00, 1 = 01, 10 = 0A, 15 = 0F, 16 = 10, 26 = 1A
+* Byte to Decimal to Hexadecimal Byte
+** 00001111 = 15 = 0F, 00010000 = 16 = 10
+** 00011010 = 26 = 1A, 11111111 = 255 = FF
+
+
+== Destination Types
+* *Single* -- Asymmetrically encrypted (default)
+** Routed, point-to-point communication
+* *Plain* -- Not Encrypted
+** Not routed, point-to-multipoint broadcasts
+* *Group* -- Symmetrically encrypted
+** Not routed, Point-to-multipoint communication
+** Routing planned for future upgrade
+
+
+== Transport
+* No node knows the complete path to a destination
+* A transport node only knows the next hop
+
+
+== Software
+* *Reticulum* -- Network Stack
+* *LXMF* -- Messaging format and delivery protocol
+* *Nomad Network* -- Mesh communication platform
+* *Sideband* -- LXMF client for Android, Linux, macOS
+* *RNode Firmware* -- Reticulum or IP traffic over LoRa
+
+
+== Hardware
+* *RNode* -- LoRa radio transceiver
+* *OpenModem* -- Packet radio modem and TNC
+
+
+== Reference Node Setup
+* *Interface Device*
+** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
+** RNode Firmware -- Python Implementation
+* *Host Device*
+** Raspberry Pi -- Running a Debian based OS
+** Reticulum -- Python Implementation
+* *USB Cable*
+** Connection -- Between interface and host device
+
+
+== Reference Client Setup
+* *Interface Device*
+** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
+** RNode Firmware -- Python Implementation
+* *Host Device*
+** Google Pixel Phone -- Running GrapheneOS
+** Sideband App -- LXMF client for Android
+* *Bluetooth*
+** Connection -- Between interface and host device
+
+
+== Contact
+* https://unsigned.io/contact.html
+
+
+== Donate
+* https://unsigned.io/donate.html
+
+
+== Credits & Licenses
+* https://reticulum.network , MIT license
+* https://github.com/markqvist , MIT license
+* https://unsigned.io , CC BY-NC-SA 4.0 license
+* https://r8io.github.io/rns-presentations , MIT license
