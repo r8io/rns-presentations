@@ -112,11 +112,22 @@ _Arthur C. Clarke_
 == Terminology
 * *Reticulum* -- Network Stack
 * *LXMF* -- Messaging format and delivery protocol
+* *Sideband* -- Messaging App
+** Peer -- Send and receive messages (LXMF client)
+* *Nomad Network* -- Mesh communication platform
+** *Peer* -- Send and receive messages (LXMF client)
+** *Node* -- Propagate and store messages
+** *Node* -- Host pages and files
+
+////
+* *Reticulum* -- Network Stack
+* *LXMF* -- Messaging format and delivery protocol
 * *Nomad Network* -- Mesh communication platform
 * *Peer* -- LXMF client
-* *Node* -- Nomade Network instance
+* *Node* -- Nomad Network instance
 ** Can propagate and store messages
 ** Can host pages and files
+////
 
 
 == What Does It Do?
@@ -259,7 +270,7 @@ image::stack-layer-model.svg[Static, size=100%]
 == Reference Node Setup
 * *Interface Device*
 ** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
-** RNode Firmware -- Python Implementation
+** RNode Firmware -- C Implementation
 * *Host Device*
 ** Raspberry Pi -- Running a Debian based OS
 ** Reticulum -- Python Implementation
@@ -270,7 +281,7 @@ image::stack-layer-model.svg[Static, size=100%]
 == Reference Client Setup
 * *Interface Device*
 ** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
-** RNode Firmware -- Python Implementation
+** RNode Firmware -- C Implementation
 * *Host Device*
 ** Google Pixel Phone -- Running GrapheneOS
 ** Sideband App -- LXMF client for Android
