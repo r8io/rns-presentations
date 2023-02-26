@@ -1,0 +1,6 @@
+/*
+Set the text color of the release information on the title page
+*/
+#_reticulum_network_stack .listingblock {
+    color: dimgrey;
+}

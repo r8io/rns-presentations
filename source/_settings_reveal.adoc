@@ -4,6 +4,7 @@
 :source-highlighter: highlightjs
 :icons: font
 :imagesdir: img
+:customcss: css/custom.css
 
 ////
 Slide backend for AsciidocFX

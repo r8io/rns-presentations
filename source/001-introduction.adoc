@@ -1,9 +1,9 @@
 ////
-Convert asciidoc to html:
-  Run the following command to convert the
-  001-introduction.adoc file to 001-introduction.html
+This presentation uses AsciiDoc markup language with Asciidoctor reveal.js
+https://docs.asciidoctor.org/asciidoc/latest/
 
-  $ npx asciidoctor-revealjs 001-introduction.adoc
+To convert the adoc file into a html presentation, run the following command:
+$ npx asciidoctor-revealjs 001-introduction.adoc
 ////
 
 include::_settings_reveal.adoc[]
@@ -14,7 +14,7 @@ image::rns_logo_512.png[RNS,400,400]
 
 Part 1 -- Introduction
 ----
-                      Release 0.4.9 Beta
+    Reticulum Release 0.4.9 Beta, Presentation Release 0.1.0
 ----
 
 == Open Source Software
@@ -86,17 +86,6 @@ _Arthur C. Clarke_
 * There will be *bugs*
 
 
-////
-== Programming Languages
-* *Python* -- Reference implementation
-** Easy to understand for code review
-* *C, C++* -- RNode Firmware (rewrite)
-** Fast on microprocessors
-* *C* -- OpenModem
-** Fast on microprocessors
-////
-
-
 == A Message Oriented System
 * High-latency, low-bandwidth links
 * Point-to-point communication
@@ -104,30 +93,26 @@ _Arthur C. Clarke_
 * Direct communication with clients in range
 * Communication over multiple hops in a network
 
-=== Hardware
+
+== Terminology
+* *Peer*
+** Send and receive messages
+* *Node*
+** Propagate and store messages
+** Host pages and files
+
+
+== Hardware
 * *RNode* -- LoRa radio transceiver
 * *OpenModem* -- Packet radio modem and TNC
 
 
-== Terminology
+== Software
 * *Reticulum* -- Network Stack
-* *LXMF* -- Messaging format and delivery protocol
-* *Sideband* -- Messaging App
-** Peer -- Send and receive messages (LXMF client)
-* *Nomad Network* -- Mesh communication platform
-** *Peer* -- Send and receive messages (LXMF client)
-** *Node* -- Propagate and store messages
-** *Node* -- Host pages and files
-
-////
-* *Reticulum* -- Network Stack
-* *LXMF* -- Messaging format and delivery protocol
-* *Nomad Network* -- Mesh communication platform
-* *Peer* -- LXMF client
-* *Node* -- Nomad Network instance
-** Can propagate and store messages
-** Can host pages and files
-////
+* *LXMF* -- Messaging protocol
+* *Sideband* -- Peer, LXMF client
+* *Nomad Network* -- Peer and Node, LXMF client
+* *RNode Firmware* -- For RNode transceiver
 
 
 == What Does It Do?
@@ -193,8 +178,7 @@ _Arthur C. Clarke_
 * Measured in bytes
 
 
-[%notitle]
-== Goodby Internet Stack
+== Goodbye Internet Stack
 image::stack-layer-model.svg[Static, size=100%]
 
 
@@ -216,17 +200,6 @@ image::stack-layer-model.svg[Static, size=100%]
 * Can be named in a dotted notation
 ** logger.sensor.temperature
 
-////
-----
-13 42 5e c1 5b 62 1c 1d 92 85 89 71 80 00 d8 14
-----
-----
-00010011 01000010 01011110 11000001
-01011011 01100010 00011100 00011101
-10010010 10000101 10001001 01110001
-10000000 00000000 11011000 00010100
-----
-////
 
 === Byte, Decimal, Hexadecimal
 * Byte to Decimal (8 bit = 1 byte)
@@ -254,39 +227,44 @@ image::stack-layer-model.svg[Static, size=100%]
 * A transport node only knows the next hop
 
 
-== Software
-* *Reticulum* -- Network Stack
-* *LXMF* -- Messaging format and delivery protocol
-* *Nomad Network* -- Mesh communication platform
-* *Sideband* -- LXMF client for Android, Linux, macOS
-* *RNode Firmware* -- Reticulum or IP traffic over LoRa
-
-
-== Hardware
-* *RNode* -- LoRa radio transceiver
-* *OpenModem* -- Packet radio modem and TNC
-
-
 == Reference Node Setup
 * *Interface Device*
 ** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
-** RNode Firmware -- C Implementation
+** RNode Firmware
 * *Host Device*
 ** Raspberry Pi -- Running a Debian based OS
-** Reticulum -- Python Implementation
-* *USB Cable*
-** Connection -- Between interface and host device
+** Reticulum
+* *Connection*
+** USB Cable -- Between interface and host device
 
 
 == Reference Client Setup
 * *Interface Device*
 ** LoRa Board -- Like a LilyGO LoRa32 v2.1 board
-** RNode Firmware -- C Implementation
+** RNode Firmware
 * *Host Device*
 ** Google Pixel Phone -- Running GrapheneOS
-** Sideband App -- LXMF client for Android
-* *Bluetooth*
-** Connection -- Between interface and host device
+** Sideband
+* *Connection*
+** Bluetooth -- Between interface and host device
+
+
+== Programming Languages
+* *Python* -- Easy to understand for code review
+** Reticulum
+** LXMF
+** Sideband
+** Nomad Network
+* *C* -- Fast on microprocessors
+** RNode Firmware
+** OpenModem
+
+
+== API
+* Build applications that communicate over LXMF
+* Very open and developer friendly API
+* Intuitive and easy to use
+* Provides transfer progress
 
 
 == Contact
